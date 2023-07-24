@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" /> {% block title %} {% endblock%}
+</head>
+
+<body>
+    <div class="theme-switch-container">
+        <span id="toggle-icon">
+            <span class="toggle-text">โหมดกลางวัน</span>
+        <i class="fas fa-sun"></i>
+        </span>
+        <label class="theme-switch">
+          <input type="checkbox">
+          <div class="slider round"></div>
+        </label>
+    </div>
+
+
+    <!-- <nav id="nav">
+        <a href="/">หน้าแรก</a>
+        <a href="/form">แบบฟอร์ม</a>
+        <a href="/about">เกี่ยวกับเรา</a>
+    </nav> -->
+    <nav id="nav">
+        <a href="#">หน้าแรก</a>
+        <a href="#form">แบบฟอร์ม</a>
+        <a href="#about">เกี่ยวกับเรา</a>
+    </nav>
+
+
+
+    <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+            </li>
+        </ul>
+    </div> -->
+    <!-- navbar-dark bg-dark -->
+    <!-- <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Kittitara</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a aria-current="page" href="/">หน้าแรก</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/form">แบบฟอร์ม</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about">เกี่ยวกับเรา</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- <script src="scipt.js"></script> -->
+
+    <div class="container my-2">
+
+        {% block content %} {% endblock%}
+    </div>
+    <section id="form">
+        <title>แบบฟอร์มบันทึกข้อมูล</title>
+        <h1 class="text-center">แบบฟอร์มบันทึกข้อมูล</h1>
+        <form method="post" action="form" enctype="multipart/form-data">
+            {% csrf_token %} {{ form.as_p}}
+
+            <div class="form-group">
+                <label for="name">ชื่อประชากร</label>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="age">อายุ</label>
+                <input type="number" name="age" id="age" class="form-control">
+            </div>
+
+            <div class="form-group">
+
+                <label for="email" class="form-label">อีเมลล์ <span class="text-body-secondary">(Optional)</span></label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="link">link</label>
+                <input type="text" name="link" id="link" class="form-control">
+            </div>
+
+
+            <br><input type="submit" value="บันทึกข้อมูล" class="btn btn-success">
+        </form>
+    </section>
+    <section id="about">
+        <h1>เกี่ยวกับเรา</h1>
+        <div class="project-container">
+            <div class="image-container">
+                <h2>เป็นนิสิตนักศึกษา</h2>
+                <img src="{% static 'img/undraw_educator_light.svg'%}" alt="" id="image1">
+            </div>
+            <div class="image-container">
+                <h2>ฝึกงานตำแหน่ง</h2>
+                <img src="{% static 'img/undraw_experience_light.svg'%}" alt="" id="image2">
+            </div>
+            <div class="image-container">
+                <h2>งาน</h2>
+                <img src="{% static 'img/undraw_static_light.svg'%}" alt="" id="image3">
+            </div>
+        </div>
+        <div class="social-icon">
+            <a class="fab fa-youtube" href="https://www.youtube.com/"></a>
+            <a class="fab fa-facebook" href="https://www.facebook.com/"></a>
+            <a class="fab fa-medium" href="https://www.medium.com/"></a>
+            <a class="fab fa-github" href="https://www.github.com/"></a>
+
+        </div>
+    </section>
+
+    <!-- <script type="text/javascript">
+        var setTheme = localStorage.getItem('theme')
+        console.log('theme:', setTheme)
+
+        if (setTheme == null) {
+            swapStyle('light.css')
+        } else {
+            swapStyle(setTheme)
+        }
+
+        function swapStyle(sheet) {
+            document.getElementById('mystylesheet').href = sheet
+            localStorage.setItem('theme', sheet)
+        }
+
+
+
+        var setTheme = localStorage.getItem('theme')
+        if (setTheme == null) {
+            swapStyles('light.css')
+        } else {
+            swapStyles(setTheme)
+        }
+
+
+        function swapStyles(sheet) {
+            document.getElementById('mystylesheet').href = sheet
+            localStorage.setItem('theme', sheet)
+        }
+
+
+            <
+            script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+
+            integrity = "sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin = "anonymous" >
+        
+    </script>
+    <script src="theme.js"></script> -->
+
+    <!-- ดูที่ว่างไฟล์ของdjango ว่า setting อย่างไร -->
+    <script src="static/js/script5.js"></script>
+</body>
+
+</html>

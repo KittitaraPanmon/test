@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %} {% endblock %} {% block content %}
+<br><br><br><br>
+<title>หน้าแรกของเว็ปไซต์</title>
+<h2 class="text-center">ข้อมูลประชากรทั้งหมด</h2>
+{% if messages %} {% for message in messages %}
+<div class="alert alert-success" role="alert">
+    <strong>{{message}}</strong>
+</div>
+{% endfor %} {% endif %}
+<br>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">รหัสประชากร</th>
+            <th scope="col">ชื่อประชากร</th>
+            <th scope="col">อายุ</th>
+            <th scope="col">อีเมลล์</th>
+            <th scope="col">วันที่เพิ่มข้อมูล</th>
+            <th scope="col">แก้ไข</th>
+            <th scope="col">ลบ</th>
+            <th scope="col">รูปภาพ</th>
+            <th scope="col">link</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in all_person %}
+        <tr>
+            <th scope="row">{{person.id}}</th>
+            <td>{{person.name}}</td>
+            <td>{{person.age}}</td>
+            <td>
+                {{person.email}}
+                <!-- <a href="{{person.email}}">{{person.email}}</a> -->
+            </td>
+            <td>{{person.date}}</td>
+            <td><a href="edit/{{person.id}}" class="btn btn-warning">แก้ไข</a></td>
+            <td>
+                <a href="delete/{{person.id}}" class="btn btn-danger" onclick="return confirm('คุณต้องการลบ {{person.name}} หรือไม่ ?')">ลบ</a>
+
+            </td>
+            <!-- <td>{{person.image}}</td> -->
+            <td><a class="btn bg-success" href="{{person.image}}">Image</a></td>
+            <td><a class="btn bg-primary" href="{{person.link}}">Link</a></td>
+            <!-- <img src="https://mpics.mgronline.com/pics/Images/564000011573901.JPEG" alt="avatar">  -->
+            {% endfor %}
+
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

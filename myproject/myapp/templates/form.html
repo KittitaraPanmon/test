@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %} {% endblock %} {% block content %}
+<br><br><br><br>
+<title>แบบฟอร์มบันทึกข้อมูล</title>
+<h2 class="text-center">แบบฟอร์มบันทึกข้อมูล</h2>
+<form method="post" action="form" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p}}
+
+    <div class="form-group">
+        <label for="name">ชื่อประชากร</label>
+        <input type="text" name="name" id="name" class="form-control">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="age">อายุ</label>
+        <input type="number" name="age" id="age" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <!-- <label for="email">อีเมลล์</label>
+        <input type="text" name="email" id="email" class="form-control"> -->
+        <label for="email" class="form-label">อีเมลล์ <span class="text-body-secondary">(Optional)</span></label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com">
+    </div>
+
+    <div class="form-group">
+        <label for="link">link</label>
+        <input type="text" name="link" id="link" class="form-control">
+    </div>
+    <!-- <div>
+        <label for="image">รูปภาพ</label>
+        <input type="image" name="image" id="image">
+    </div> -->
+
+
+
+
+    <!-- {% if obj %}
+    <h3>Successfully uploaded : {{img_obj.caption}}</h3>
+    <img src="{{obj.image.url}}" alt="image" class="img-thumbnail" height="20%" width="20%"> {% endif %} {% for x in img %}
+    <img src="{{x.image.url}}" height="20%" width="20%" class="img-thumbnail" alt="..."> {% endfor %} -->
+    <br><input type="submit" value="บันทึกข้อมูล" class="btn btn-success">
+</form>
+
+{% endblock %}
